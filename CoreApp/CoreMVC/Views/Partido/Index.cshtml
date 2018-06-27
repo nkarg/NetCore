@@ -1,0 +1,12 @@
+﻿@using CoreEntity;
+@{
+    ViewData["Title"] = "Index";
+    var partido = (Partido)ViewBag.Partido;
+}
+
+<h2>Index</h2>
+
+<h2>Resultado</h2>
+<div class="alert alert-success" role="alert">
+    <strong>@partido.Resultado()</strong>
+</div>
