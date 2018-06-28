@@ -19,6 +19,8 @@ namespace CoreMVC.Controllers
             dynamic obj = new ExpandoObject();
             obj.Nombre = "Eduardo";
 
+            var test = new { prop = "", prop2 = 2 };
+
             ViewBag.Dinamico = obj;
             ViewBag.Partido = partido;
             return View();
