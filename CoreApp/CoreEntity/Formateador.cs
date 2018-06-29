@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace CoreEntity
@@ -8,7 +9,7 @@ namespace CoreEntity
     {
         public string NombreCompleto(IEquipo equipo)
         {
-            return $"Inyectado: {equipo.Nombre}";
+            return $"Inyectado: {equipo.Nombre} {Guid.NewGuid().ToString()} ID OBJ {this.GetHashCode()}";
         }
     }
 }
