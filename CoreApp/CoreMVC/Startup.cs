@@ -27,7 +27,7 @@ namespace CoreMVC
         {
             //services.AddTransient(typeof(IFormateador), typeof(Formateador));
             //services.AddSingleton<IFormateador, Formateador>();
-            services.AddTransient<IFormateador, Formateador>();
+            services.AddTransient<IFormateador, SuperFormateador>();
 
             services.Configure<CookiePolicyOptions>(options =>
             {
