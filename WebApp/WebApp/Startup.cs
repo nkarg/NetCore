@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -25,8 +26,24 @@ namespace WebApp
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseStaticFiles();
+            app.Use(async (context, next) =>
+            {
+                //Acciones
+                //var file = Path.Combine(env.WebRootPath, "\\" + context.Request.Path.Value);
+                if (File.Exists(env.WebRootPath + "\\" + context.Request.Path.Value.Split("/")[1]))
+                {
+                    //Delegar
+                    await next.Invoke();
+                }
+                else
+                {
+                    context.Response.StatusCode = StatusCodes.Status404NotFound;
+                    await context.Response.WriteAsync("File not found");
+                }
+            });
 
+            app.UseStaticFiles();
+            
             app.Use(async (context, next) =>
             {
                 //Acciones
@@ -35,7 +52,7 @@ namespace WebApp
 
                 await next.Invoke();
 
-                await context.Response.WriteAsync(Environment.NewLine +"Metodo1 FIN");
+                await context.Response.WriteAsync(Environment.NewLine + "Metodo1 FIN");
             });
 
             app.Use(async (context, next) =>
@@ -50,7 +67,7 @@ namespace WebApp
             });
 
             app.Map("/Mundial-Rusia-2018", MundialRusia2018Handler.Handler);
-            
+
             app.Run(async (context) =>
             {
                 if (context.Request.Path.Value.Equals("/Eduardo.html"))
