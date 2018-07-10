@@ -48,5 +48,13 @@ namespace CoreAuth.Controllers
             
             return RedirectToAction("Login");
         }
+
+        [HttpPost]
+        public async Task<IActionResult> LogOut()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            return RedirectToAction("Login");
+        }
     }
 }
