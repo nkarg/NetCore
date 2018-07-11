@@ -17,6 +17,8 @@ namespace CoreAuth
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
+            var curso = configuration["Curso"];
         }
 
         public IConfiguration Configuration { get; }
