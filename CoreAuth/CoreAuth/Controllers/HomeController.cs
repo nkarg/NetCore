@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using CoreAuth.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
+using Core.Entities;
 
 namespace CoreAuth.Controllers
 {
@@ -23,6 +24,24 @@ namespace CoreAuth.Controllers
         public IActionResult Index()
         {
             ViewBag.Environment = _environment.EnvironmentName;
+
+            //PRUEBAS
+
+            var obj1 = new ClaseMaestra();
+            var obj2 = new ClaseDerivada();
+            ClaseMaestra obj3 = new ClaseDerivada();
+
+            var test1 = obj1.Metodo();
+            var test2 = obj1.MetodoVirtual();
+
+            var test3 = obj2.Metodo();
+            var test4 = obj2.MetodoVirtual();
+            var test5 = obj2.MetodoBase();
+            var test6 = obj2.MetodoVirtualBase();
+
+            var test7 = obj3.Metodo();
+            var test8 = obj3.MetodoVirtual();
+
             return View();
         }
 
