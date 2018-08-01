@@ -44,6 +44,13 @@ namespace CoreAuth.Controllers
 
             return View();
         }
+        
+        [Route("Home/Test/{dataA}-{dataB}/{id?}")]
+        public IActionResult Test([FromRoute]string dataA, [FromRoute]string dataB, [FromQuery]string id, [FromQuery]string opcional)
+        {
+            var test = new { DataA = dataA, DataB = dataB, Opcional = id };
+            return View();
+        }
 
         public IActionResult About()
         {
