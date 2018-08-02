@@ -32,7 +32,8 @@ namespace CoreAuth.Controllers
             var provider = new PhysicalFileProvider(Directory.GetCurrentDirectory());
             var contents = provider.GetDirectoryContents(string.Empty);
             var fileInfo = provider.GetFileInfo("wwwroot/js/site.js");
-            var contents2 = _fileProvider.GetDirectoryContents("advisor");
+            var path = Path.Combine("advisor", "caco");
+            var contents2 = _fileProvider.GetDirectoryContents(path);
 
             //PRUEBAS
 
