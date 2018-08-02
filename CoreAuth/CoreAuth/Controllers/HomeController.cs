@@ -8,6 +8,8 @@ using CoreAuth.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Core.Entities;
+using System.IO;
+using Microsoft.Extensions.FileProviders;
 
 namespace CoreAuth.Controllers
 {
@@ -15,15 +17,22 @@ namespace CoreAuth.Controllers
     public class HomeController : Controller
     {
         private IHostingEnvironment _environment;
+        private IFileProvider _fileProvider;
 
-        public HomeController(IHostingEnvironment environment)
+        public HomeController(IHostingEnvironment environment, IFileProvider fileProvider)
         {
             _environment = environment;
+            _fileProvider = fileProvider;
         }
 
         public IActionResult Index()
         {
             ViewBag.Environment = _environment.EnvironmentName;
+
+            var provider = new PhysicalFileProvider(Directory.GetCurrentDirectory());
+            var contents = provider.GetDirectoryContents(string.Empty);
+            var fileInfo = provider.GetFileInfo("wwwroot/js/site.js");
+            var contents2 = _fileProvider.GetDirectoryContents("advisor");
 
             //PRUEBAS
 
