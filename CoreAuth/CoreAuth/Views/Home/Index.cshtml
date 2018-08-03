@@ -1,5 +1,9 @@
-﻿@{
+﻿@using Microsoft.Extensions.FileProviders
+@using System.Collections.Generic;
+@{
     ViewData["Title"] = "Home Page";
+    IDirectoryContents cont = ViewBag.Contents;
+    var dir = (string)ViewBag.Directory;
 }
 
 <h1>Loaded from @ViewBag.Environment</h1>
@@ -95,10 +99,23 @@
 </div>
 
 <form action="/Account/LogOut" method="post">
-    <input type="submit" name="btnCerrar" value="Cerrar" class="btn-danger"/>
+    <input type="submit" name="btnCerrar" value="Cerrar" class="btn-danger" />
 </form>
 
 @Html.TextBox("hola")
+
+<div class="container" style="padding-top:1rem;">
+    <ul>
+        @foreach (var item in cont)
+        {
+            <li>
+                <a href="@Url.Action("Download", "Home", new { filename = item.Name })">Descargar @item.Name</a>
+            </li>
+        }
+
+        <li><a href="/advisor/caco/Requerimientos.docx">Descarga caqueña</a></li>
+    </ul>
+</div>
 
 <select>
     <!option value="uno"> uno</!option>

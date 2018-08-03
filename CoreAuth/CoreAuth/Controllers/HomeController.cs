@@ -33,8 +33,11 @@ namespace CoreAuth.Controllers
             var contents = provider.GetDirectoryContents(string.Empty);
             var fileInfo = provider.GetFileInfo("wwwroot/js/site.js");
             var path = Path.Combine("advisor", "caco");
-            var contents2 = _fileProvider.GetDirectoryContents(path);
+            var advFiles = _fileProvider.GetDirectoryContents(path);
 
+            var test = Directory.GetCurrentDirectory();
+            ViewBag.Contents = advFiles;
+            ViewBag.Directory = Directory.GetCurrentDirectory();
             //PRUEBAS
 
             var obj1 = new ClaseMaestra();
@@ -54,7 +57,7 @@ namespace CoreAuth.Controllers
 
             return View();
         }
-        
+
         [Route("Home/Test/{dataA}-{dataB}/{id?}")]
         public IActionResult Test([FromRoute]string dataA, [FromRoute]string dataB, [FromQuery]string id, [FromQuery]string opcional)
         {
@@ -85,6 +88,58 @@ namespace CoreAuth.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public async Task<IActionResult> Download(string filename)
+        {
+            
+            if (filename == null)
+                return Content("filename not present");
+
+            var path = Path.Combine(
+                           Directory.GetCurrentDirectory(),
+                           "wwwroot", "advisor", "caco", filename);
+
+            var fileInfo = _fileProvider.GetFileInfo(path);
+
+            if (fileInfo.Exists)
+            {
+                var memory = new MemoryStream();
+                using (var stream = new FileStream(path, FileMode.Open))
+                {
+                    await stream.CopyToAsync(memory);
+                }
+                memory.Position = 0;
+                return File(memory, GetContentType(path), Path.GetFileName(path));
+            }
+
+            return RedirectToAction("Error");
+            
+        }
+
+        private string GetContentType(string path)
+        {
+            var types = GetMimeTypes();
+            var ext = Path.GetExtension(path).ToLowerInvariant();
+            return types[ext];
+        }
+
+        private Dictionary<string, string> GetMimeTypes()
+        {
+            return new Dictionary<string, string>
+            {
+                {".txt", "text/plain"},
+                {".pdf", "application/pdf"},
+                {".doc", "application/vnd.ms-word"},
+                {".docx", "application/vnd.ms-word"},
+                {".xls", "application/vnd.ms-excel"},
+                {".xlsx", "application/vnd.openxmlformatsofficedocument.spreadsheetml.sheet"},  
+                {".png", "image/png"},
+                {".jpg", "image/jpeg"},
+                {".jpeg", "image/jpeg"},
+                {".gif", "image/gif"},
+                {".csv", "text/csv"}
+            };
         }
     }
 }
