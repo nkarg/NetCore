@@ -113,8 +113,7 @@ namespace CoreAuth.Controllers
                 return File(memory, GetContentType(path), Path.GetFileName(path));
             }
 
-            return RedirectToAction("Error");
-            
+            return NoContent();
         }
 
         private string GetContentType(string path)
