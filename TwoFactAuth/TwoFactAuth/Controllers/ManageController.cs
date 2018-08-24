@@ -43,6 +43,8 @@ namespace TwoFactAuth.Controllers
             _urlEncoder = urlEncoder;
         }
 
+        public string Message { get; set; }
+
         [TempData]
         public string StatusMessage { get; set; }
 
