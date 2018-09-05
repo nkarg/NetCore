@@ -14,7 +14,7 @@ namespace DataDapper
         {
             var result = new Equipo();
             var sql = "select * from equipo.Equipo where EquipoId = @EquipoId";
-            using (var connection = new SqlConnection("Server=SIBPC05-PC\SQLEXPRESS;Database=ProDe;Trusted_Connection=True;"))
+            using (var connection = new SqlConnection("Server=SIBPC05-PC/SQLEXPRESS;Database=ProDe;Trusted_Connection=True;"))
             {
                 var param = new DynamicParameters();
                 param.Add("@EquipoId", 1);

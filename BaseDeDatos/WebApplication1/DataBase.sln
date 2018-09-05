@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repo", "Repo\Repo.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{54107162-E6CD-419E-9862-F32436F3FFC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataDapper", "DataDapper\DataDapper.csproj", "{F737BBC9-59C1-458E-A27E-BE052838D36F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataDapper", "DataDapper\DataDapper.csproj", "{F737BBC9-59C1-458E-A27E-BE052838D36F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiREST", "ApiREST\ApiREST.csproj", "{8B9ACC9B-4CA5-42B8-9427-C6F8025645C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{F737BBC9-59C1-458E-A27E-BE052838D36F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F737BBC9-59C1-458E-A27E-BE052838D36F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F737BBC9-59C1-458E-A27E-BE052838D36F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B9ACC9B-4CA5-42B8-9427-C6F8025645C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B9ACC9B-4CA5-42B8-9427-C6F8025645C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B9ACC9B-4CA5-42B8-9427-C6F8025645C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B9ACC9B-4CA5-42B8-9427-C6F8025645C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
