@@ -51,9 +51,14 @@ namespace ApiREST.Controllers
             {
                 if (item.EquipoId.Equals(id))
                 {
-                    var strEquipo = JsonConvert.SerializeObject(item);
-                    return Ok(strEquipo);
+                    //var strEquipo = JsonConvert.SerializeObject(item);
+                    //return Ok(strEquipo);
+                    equipos.Add(item);
                 }
+            }
+            if (equipos.Any())
+            {
+                return equipos;
             }
 
             return NotFound($"Equipo con ID: {id} no encontrado");

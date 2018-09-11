@@ -36,7 +36,7 @@ namespace ApiREST
                 swagger.SwaggerDoc("v1", new Info
                 {
                     Title = "Api de prueba Swagger",
-                    Version = "v3",
+                    Version = "v1",
 
                 });
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, "ApiREST.xml");

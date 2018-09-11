@@ -7,6 +7,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.13" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.0" />
   </ItemGroup>
 
@@ -14,6 +15,10 @@
     <ProjectReference Include="..\Core\Core.csproj" />
     <ProjectReference Include="..\Data\Data.csproj" />
     <ProjectReference Include="..\Repo\Repo.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Clients\" />
   </ItemGroup>
 
 </Project>

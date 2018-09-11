@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Base.Models;
+using swagger;
 
 namespace Base.Controllers
 {
@@ -12,6 +13,12 @@ namespace Base.Controllers
     {
         public IActionResult Index()
         {
+            ApidepruebaSwagger api = new ApidepruebaSwagger
+            {
+                BaseUri = new Uri("http://localhost:54388")
+            };
+
+            var temp = api.ApiTemporadaByIdGet(10);
             return View();
         }
 
