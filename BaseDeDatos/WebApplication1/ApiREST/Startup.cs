@@ -36,7 +36,7 @@ namespace ApiREST
                 swagger.SwaggerDoc("v1", new Info
                 {
                     Title = "Api de prueba Swagger",
-                    Version = "v1",
+                    Version = "v3",
 
                 });
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, "ApiREST.xml");
@@ -58,7 +58,7 @@ namespace ApiREST
                 app.UseDeveloperExceptionPage();
             }
             app.UseSwagger();
-            app.UseSwaggerUI(s => s.SwaggerEndpoint("/swagger/v1/swagger.json", "Api de prueba Swagger"));
+            app.UseSwaggerUI(s => s.SwaggerEndpoint("/swagger/v1/swagger.json", "Api con Swagger"));
             app.UseMvc();
         }
     }

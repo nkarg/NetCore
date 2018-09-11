@@ -36,7 +36,8 @@ namespace ApiREST.Controllers
         /// Obtiene un equipo mediante un ID especifico
         /// </summary>
         /// <param name="id">Id del Equipo</param>
-        /// <returns>Un Equipo</returns>
+        /// <returns code="200">Un Equipo</returns>
+        /// <returns code="404">Equipo con ID no encontrado</returns>
         [HttpGet("{id}")]
         public ActionResult<List<EquipoEntity>> Get(int id)
         {
