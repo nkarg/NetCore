@@ -9,7 +9,7 @@ namespace Base.Controllers
 {
     public class EquipoController : Controller
     {
-        private readonly IEquipo _equipoManager;
+        public IEquipo _equipoManager;
 
         public EquipoController(IEquipo equipoManager)
         {
@@ -17,10 +17,21 @@ namespace Base.Controllers
         }
 
         // GET: Equipo
-        public ActionResult Index()
+        public IActionResult Index()
         {
             var model = _equipoManager.GetAll();
-            
+
+            return View(model);
+        }
+
+        // GET ById: Equipo
+        public IActionResult Details(int id)
+        {
+            var model = _equipoManager.GetAll().Where(x => x.EquipoId.Equals(id)).FirstOrDefault();
+            if (model == null)
+            {
+                return NotFound();
+            }
             return View(model);
         }
     }
